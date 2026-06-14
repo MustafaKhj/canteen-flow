@@ -4,5 +4,5 @@ pymongo==4.8.0
 python-dotenv==1.0.1
 PyJWT==2.9.0
 Werkzeug==3.0.3
-pandas==2.2.2
+#pandas==2.2.2
 numpy==2.0.1
