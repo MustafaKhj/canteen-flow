@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canteen-Flow | Campus Food Order System</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand"><span class="brand-mark">CF</span><span>Canteen-Flow</span></div>
+    <div class="nav-actions">
+      <button class="ghost" onclick="showView('student')">Student</button>
+      <button class="ghost" onclick="showView('staff')">Staff</button>
+      <button class="ghost" onclick="showView('admin')">Admin</button>
+      <button class="danger hidden" id="logoutBtn" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">MongoDB-only advanced database project</p>
+        <h1>Modern campus canteen ordering with live operations and demand insights.</h1>
+        <p class="hero-copy">Canteen-Flow replaces counter queues and paper records with role-based ordering, staff workflow, inventory monitoring, feedback tracking, and AI-style demand forecasting.</p>
+      </div>
+      <div class="login-card">
+        <h2>Login</h2>
+        <p class="muted">Use seeded demo accounts after running database/seed.py</p>
+        <input id="email" placeholder="Email" value="student@canteenflow.edu" />
+        <input id="password" type="password" placeholder="Password" value="student123" />
+        <button onclick="login()">Login to Dashboard</button>
+        <div class="demo-grid">
+          <button class="ghost" onclick="fillLogin('student')">Student</button>
+          <button class="ghost" onclick="fillLogin('staff')">Staff</button>
+          <button class="ghost" onclick="fillLogin('admin')">Admin</button>
+        </div>
+        <p id="loginMsg" class="msg"></p>
+      </div>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section id="studentView" class="panel hidden">
+      <div class="panel-head"><h2>Student Order Interface</h2><p>Browse menu, build cart, place order, and track your history.</p></div>
+      <div class="layout-two">
+        <div><h3>Today’s Menu</h3><div id="menuGrid" class="grid"></div></div>
+        <aside class="cart"><h3>Your Cart</h3><div id="cartItems"></div><div class="total">Total: Rs. <span id="cartTotal">0</span></div><button onclick="placeOrder()">Place Order</button></aside>
+      </div>
+      <h3>My Orders</h3><div id="myOrders" class="table-wrap"></div>
+    </section>
+
+    <section id="staffView" class="panel hidden">
+      <div class="panel-head"><h2>Staff Operations</h2><p>Manage incoming orders and update cooking/pickup status.</p></div>
+      <div id="staffOrders" class="table-wrap"></div>
+    </section>
+
+    <section id="adminView" class="panel hidden">
+      <div class="panel-head"><h2>Admin Dashboard</h2><p>Revenue, top items, low stock, feedback, and demand forecasting.</p></div>
+      <div class="actions"><button onclick="generateForecast()">Generate Forecast</button><button class="ghost" onclick="loadAdmin()">Refresh Dashboard</button></div>
+      <div id="adminMetrics" class="metric-grid"></div>
+      <div class="layout-two"><div><h3>Demand Forecast</h3><div id="forecastBox" class="cards"></div></div><div><h3>Inventory</h3><div id="inventoryBox" class="table-wrap"></div></div></div>
+      <h3>Feedback Summary</h3><div id="feedbackBox" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
